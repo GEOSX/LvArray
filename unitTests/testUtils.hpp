@@ -84,7 +84,7 @@ template< typename T, typename LAYOUT >
 LVARRAY_HOST_DEVICE inline constexpr
 T * getRAJAViewData( RAJA::View< T, LAYOUT > const & view )
 {
-#if RAJA_VERSION_MAJOR <= 0 && RAJA_VERSION_MINOR <= 13
+#if 0
   return view.data;
 #else
   return view.get_data();
@@ -95,7 +95,7 @@ template< typename T, typename LAYOUT >
 LVARRAY_HOST_DEVICE inline constexpr
 LAYOUT const & getRAJAViewLayout( RAJA::View< T, LAYOUT > const & view )
 {
-#if RAJA_VERSION_MAJOR <= 0 && RAJA_VERSION_MINOR <= 13
+#if 0
   return view.layout;
 #else
   return view.get_layout();
