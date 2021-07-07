@@ -30,7 +30,6 @@ set(ENABLE_RAJA ON CACHE BOOL "")
 
 set(thirdPartyLibs ${thirdPartyLibs} RAJA)
 
-
 ###############################
 # UMPIRE
 ###############################
@@ -44,6 +43,11 @@ if(ENABLE_UMPIRE)
     find_package(umpire REQUIRED
                  PATHS ${UMPIRE_DIR})
     
+    # blt_register_library(NAME umpire
+    #                      INCLUDES ${UMPIRE_INCLUDE_DIRS}
+    #                      LIBRARIES umpire
+    #                      TREAT_INCLUDES_AS_SYSTEM ON)
+
     set(thirdPartyLibs ${thirdPartyLibs} umpire)
 else()
     message(STATUS "Not using Umpire.")
@@ -70,11 +74,11 @@ if(ENABLE_CHAI)
     find_package(chai REQUIRED
                  PATHS ${CHAI_DIR})
 
-    # If this isn't done chai will add -lRAJA to the link line, but we don't link to RAJA like that.
-    get_target_property(CHAI_LINK_LIBRARIES chai INTERFACE_LINK_LIBRARIES)
-    list(REMOVE_ITEM CHAI_LINK_LIBRARIES RAJA)
-    set_target_properties(chai
-                          PROPERTIES INTERFACE_LINK_LIBRARIES "${CHAI_LINK_LIBRARIES}")
+    # # If this isn't done chai will add -lRAJA to the link line, but we don't link to RAJA like that.
+    # get_target_property(CHAI_LINK_LIBRARIES chai INTERFACE_LINK_LIBRARIES)
+    # list(REMOVE_ITEM CHAI_LINK_LIBRARIES RAJA)
+    # set_target_properties(chai
+    #                       PROPERTIES INTERFACE_LINK_LIBRARIES "${CHAI_LINK_LIBRARIES}")
 
     set(thirdPartyLibs ${thirdPartyLibs} chai)
 else()
@@ -95,10 +99,10 @@ if(ENABLE_CALIPER)
     find_package(caliper REQUIRED
                  PATHS ${CALIPER_DIR})
 
-    blt_register_library(NAME caliper
-                         INCLUDES ${caliper_INCLUDE_PATH}
-                         LIBRARIES caliper
-                         TREAT_INCLUDES_AS_SYSTEM ON)
+    # blt_register_library(NAME caliper
+    #                      INCLUDES ${caliper_INCLUDE_PATH}
+    #                      LIBRARIES caliper
+    #                      TREAT_INCLUDES_AS_SYSTEM ON)
 
     set(thirdPartyLibs ${thirdPartyLibs} caliper)
 else()

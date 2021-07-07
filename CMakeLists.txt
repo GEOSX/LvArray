@@ -82,7 +82,6 @@ blt_list_append( TO lvarray_dependencies ELEMENTS cuda IF ENABLE_CUDA )
 
 blt_list_append( TO lvarray_dependencies ELEMENTS caliper IF ENABLE_CALIPER )
 
-
 add_subdirectory( src )
 
 if( ENABLE_TESTS AND NOT DISABLE_UNIT_TESTS )
@@ -108,5 +107,3 @@ endif()
 if( ENABLE_DOCS )
     add_subdirectory( docs )
 endif()
-
-
